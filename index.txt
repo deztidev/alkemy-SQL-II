@@ -1,0 +1,22 @@
+SELECT COUNT(ESTUDIANTE_legajo)
+FROM TABLA
+WHERE nombre = 'Mecánica';
+
+SELECT MIN(salario)
+FROM PROFESOR
+WHERE fecha_nacimiento BETWEEN '1980-01-01' AND '1989-12-31';
+
+SELECT B.nombre, COUNT(*) AS 'Cantidad de pasajeros'
+FROM PASAJERO A INNER JOIN PAIS B ON B.idpais = A.idpais
+GROUP BY B.nombre;
+
+SELECT SUM(monto) AS 'Monto total'
+FROM PAGO;
+
+SELECT ROUND(SUM(monto), 2) AS 'Monto total del primer pasajero'
+FROM PAGO
+WHERE idpasajero = 1;
+
+SELECT AVG(monto) AS 'Promedio total del segundo pasajero'
+FROM PAGO
+WHERE idpasajero = 2;
