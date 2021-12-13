@@ -1,0 +1,28 @@
+SELECT E.nombre, E.apellido, C.nombre
+FROM ESTUDIANTE E
+INNER JOIN INSCRIPCION I ON E.legajo = I.ESTUDIANTE_legajo
+INNER join CURSO C on I.CURSO_codigo = C.codigo;
+
+SELECT E.nombre, E.apellido, C.nombre
+FROM ESTUDIANTE E
+INNER JOIN INSCRIPCION I ON E.legajo = I.ESTUDIANTE_legajo
+INNER join CURSO C on I.CURSO_codigo = C.codigo
+ORDER BY C.nombre;
+
+SELECT P.nombre, P.apellido, C.nombre
+FROM PROFESOR P
+INNER JOIN CURSO C ON P.ID = C.PROFESOR_id;
+
+SELECT P.nombre, P.apellido, C.nombre
+FROM PROFESOR P
+INNER JOIN CURSO C ON P.ID = C.PROFESOR_id
+ORDER BY C.nombre;
+
+SELECT C.nombre, C.cupo - COUNT(I.CURSO_codigo)
+FROM INSCRIPCION I INNER JOIN CURSO C ON I.curso_codigo = C.codigo
+GROUP BY C.cupo;
+
+SELECT C.nombre, C.cupo - COUNT(I.CURSO_codigo)
+FROM INSCRIPCION I INNER join CURSO C ON I.curso_codigo = C.codigo
+GROUP by C.cupo
+HAVING C.cupo - COUNT(I.CURSO_codigo) < 10;
