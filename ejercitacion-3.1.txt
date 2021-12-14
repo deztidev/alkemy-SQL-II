@@ -1,0 +1,15 @@
+CREATE TABLE persona (
+  id INT NOT NULL,
+  nombre VARCHAR(45) NOT NULL
+);
+
+INSERT INTO persona VALUES (4, 'Miguel');
+INSERT INTO persona VALUES (1, 'Carlos');
+INSERT INTO persona VALUES (3, 'Roberto');
+INSERT INTO persona VALUES (2, 'Federico');
+
+SELECT * FROM persona;
+
+ALTER TABLE persona ADD CONSTRAINT pk_id PRIMARY KEY(id);
+
+SELECT * FROM persona;
