@@ -1,0 +1,24 @@
+SELECT e.legajo, COUNT(i.CURSO_codigo)
+FROM ESTUDIANTE e INNER JOIN INSCRIPCION i ON e.legajo = i.ESTUDIANTE_legajo
+GROUP BY i.CURSO_codigo;
+
+SELECT e.legajo, COUNT(i.CURSO_codigo)
+FROM ESTUDIANTE e INNER JOIN INSCRIPCION i ON e.legajo = i.ESTUDIANTE_legajo
+GROUP BY i.CURSO_codigo HAVING COUNT(i.CURSO_codigo) > 1;
+
+SELECT *
+FROM ESTUDIANTE e LEFT JOIN INSCRIPCION i ON e.legajo = i.ESTUDIANTE_legajo
+GROUP BY i.CURSO_codigo HAVING COUNT(i.CURSO_codigo) < 1;
+
+PROFESOR: id CLUSTERED
+CURSO: codigo CLUSTERED, PROFESOR_id NONCLUSTERED
+INSCRIPCION: numero CLUSTERED, CURSO_codigo NONCLUSTERED, ESTUDIANTE_legajo NONCLUSTERED
+ESTUDIANTE: legajo CLUSTERED
+
+SELECT e.legajo, e.nombre, e.apellido, e.fecha_nacimiento, e.carrera
+FROM ESTUDIANTE e
+INNER JOIN INSCRIPCION i ON e.legajo = i.ESTUDIANTE_legajo
+INNER JOIN CURSO c ON i.CURSO_codigo = c.codigo
+INNER JOIN PROFESOR p ON c.PROFESOR_id = p.id
+WHERE p.apellido = 'Pérez' OR p.apellido = 'Paz'
+GROUP by e.legajo;
