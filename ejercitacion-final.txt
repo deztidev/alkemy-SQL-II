@@ -20,5 +20,5 @@ FROM ESTUDIANTE e
 INNER JOIN INSCRIPCION i ON e.legajo = i.ESTUDIANTE_legajo
 INNER JOIN CURSO c ON i.CURSO_codigo = c.codigo
 INNER JOIN PROFESOR p ON c.PROFESOR_id = p.id
-WHERE p.apellido = 'Pérez' OR p.apellido = 'Paz'
+WHERE p.apellido IN ('Pérez', 'Paz')
 GROUP by e.legajo;
